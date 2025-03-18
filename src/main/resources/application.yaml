@@ -1,0 +1,16 @@
+#server:
+#  port: 1234
+
+#logging:
+#  level:
+#    web: trace
+
+spring:
+  application:
+    name: "Spring-Security-Custom-Auth"
+  data:
+    mongodb:
+      uri: mongodb+srv://root:root@spring-boot-support-por.xajjg.mongodb.net/?retryWrites=true&w=majority&appName=spring-boot-support-portal
+      username: root
+      password: root
+      database: spring-boot-support-portal
