@@ -14,3 +14,6 @@ spring:
       username: root
       password: root
       database: spring-boot-support-portal
+
+JWT:
+  SECRET: "YOUR SECRET CODE STORE IN VAULT"

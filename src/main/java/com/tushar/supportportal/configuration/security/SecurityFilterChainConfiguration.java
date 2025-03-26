@@ -3,16 +3,21 @@ package com.tushar.supportportal.configuration.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.DefaultSecurityFilterChain;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-public class SecurityFilterChain {
+@EnableWebSecurity
+public class SecurityFilterChainConfiguration {
 
-	public DefaultSecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
-		return httpSecurity.
-				userDetailsService(getUserDetailsManager())
+	public SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
+		return httpSecurity
+				.authorizeHttpRequests(ar -> {
+					ar.anyRequest().authenticated();
+				})
+				.userDetailsService(getUserDetailsManager())
 				.build();
 	}
 
