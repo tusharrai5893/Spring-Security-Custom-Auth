@@ -34,6 +34,10 @@ public class SupportPortalAuthenticationToken extends AbstractAuthenticationToke
 		return new SupportPortalAuthenticationToken(user, getGrantedAuthorities(user));
 	}
 
+	private static List<GrantedAuthority> getGrantedAuthorities(User user) {
+		return Arrays.stream(user.getAuthorities()).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+	}
+
 	@Override
 	public Object getCredentials() {
 		return "[PASSWORD_PROTECTED]"; // No direct password, as JWT is used
@@ -52,9 +56,5 @@ public class SupportPortalAuthenticationToken extends AbstractAuthenticationToke
 	@Override
 	public String getName() {
 		return this.user.getUsername();
-	}
-
-	private static List<GrantedAuthority> getGrantedAuthorities(User user) {
-		return Arrays.stream(user.getAuthorities()).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
 	}
 }

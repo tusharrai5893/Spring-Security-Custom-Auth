@@ -17,7 +17,9 @@ public class Authentication {
 
 	private final UserMongoRepos userMongoRepos;
 
-	public Authentication(UserMongoRepos userMongoRepos) {this.userMongoRepos = userMongoRepos;}
+	public Authentication(UserMongoRepos userMongoRepos) {
+		this.userMongoRepos = userMongoRepos;
+	}
 
 	@GetMapping("/users")
 	public ResponseEntity<List<User>> users() {
