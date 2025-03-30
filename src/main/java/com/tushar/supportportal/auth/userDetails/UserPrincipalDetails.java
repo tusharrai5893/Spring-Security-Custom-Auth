@@ -20,17 +20,17 @@ public class UserPrincipalDetails implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return stream(this.user.getAuthorities()).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+		return stream(this.user.authorities()).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
 	}
 
 	@Override
 	public String getPassword() {
-		return this.user.getPassword();
+		return user.password();
 	}
 
 	@Override
 	public String getUsername() {
-		return this.user.getUsername();
+		return this.user.username();
 	}
 
 	@Override

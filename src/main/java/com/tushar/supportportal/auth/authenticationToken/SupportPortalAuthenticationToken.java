@@ -35,7 +35,7 @@ public class SupportPortalAuthenticationToken extends AbstractAuthenticationToke
 	}
 
 	private static List<GrantedAuthority> getGrantedAuthorities(User user) {
-		return Arrays.stream(user.getAuthorities()).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+		return Arrays.stream(user.authorities()).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
 	}
 
 	@Override
@@ -55,6 +55,6 @@ public class SupportPortalAuthenticationToken extends AbstractAuthenticationToke
 
 	@Override
 	public String getName() {
-		return this.user.getUsername();
+		return this.user.username();
 	}
 }
