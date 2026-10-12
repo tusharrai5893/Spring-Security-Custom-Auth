@@ -9,7 +9,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +29,7 @@ public interface JwtTokenProvider {
 	String getSubjectFromToken(String token);
 
 	default String[] getClaimsFromPrincipal(UserPrincipalDetails upd) {
-		var authorities = new ArrayList<>(upd.getAuthorities());
+		var authorities = List.of(upd.getAuthorities());
 		return authorities.toArray(new String[0]);
 	}
 

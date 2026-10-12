@@ -12,7 +12,8 @@ import java.util.Date;
 public record User(
 		@NonNull
 		@Id
-		@Field(name = "_id", write = Field.Write.NON_NULL) // makes it non null and mongo automatically ensures _id -> non updatatable
+		@Field(name = "_id", write = Field.Write.NON_NULL)
+		// makes it non null and mongo automatically ensures _id -> non updatatable
 		String _id,
 		String userId,
 		String username,
